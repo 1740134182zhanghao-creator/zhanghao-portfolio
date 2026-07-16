@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 const stats = [
   [1300, "Commercial Videos", "+"],
@@ -30,6 +30,8 @@ const projects = [
 const workflow = ["Research", "Strategy", "ChatGPT", "Prompt Engineering", "Midjourney", "Seedance", "Voice Clone", "Editing", "Commercial Video"];
 const stack = ["ChatGPT", "Seedance", "Midjourney", "Kling", "Nano Banana", "Dreamina", "Premiere Pro", "After Effects", "Photoshop"];
 
+const principles = ["Premium product storytelling", "Fast AI iteration loops", "Global e-commerce localization"];
+
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -44,7 +46,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
-function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 34, filter: "blur(10px)" }}
@@ -61,6 +63,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-white text-black">
       <div className="noise" />
+      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[640px] bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0.10),transparent_58%)]" />
       <nav className="fixed left-1/2 top-5 z-50 w-[min(92vw,980px)] -translate-x-1/2 rounded-full border border-black/10 bg-white/70 px-4 py-3 shadow-soft backdrop-blur-2xl">
         <div className="flex items-center justify-between text-sm font-medium">
           <a href="#hero" className="tracking-tight">Zhang Hao</a>
@@ -77,6 +80,13 @@ export default function Home() {
           <h1 className="text-6xl font-semibold tracking-[-0.07em] md:text-8xl lg:text-9xl">Zhang Hao</h1>
           <h2 className="mt-5 text-2xl font-medium tracking-[-0.03em] text-black/70 md:text-4xl">AI Creative Video Designer</h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/55 md:text-xl">Creating AI-powered commercial videos for global e-commerce brands.</p>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2">
+            {principles.map((principle) => (
+              <span key={principle} className="rounded-full border border-black/10 bg-white/70 px-4 py-2 text-sm text-black/55 shadow-sm backdrop-blur">
+                {principle}
+              </span>
+            ))}
+          </div>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a href="#projects" className="rounded-full bg-black px-7 py-4 font-medium text-white transition hover:scale-105">View Projects</a>
             <a href="#contact" className="rounded-full border border-black/10 bg-white px-7 py-4 font-medium transition hover:scale-105">Download Resume</a>
@@ -107,7 +117,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-6 py-28"><Reveal><p className="text-sm uppercase tracking-[0.35em] text-black/45">AI Stack</p><div className="mt-8 flex flex-wrap gap-3">{stack.map((tool) => <span key={tool} className="rounded-full border border-black/10 bg-white/70 px-5 py-3 text-lg shadow-sm backdrop-blur">{tool}</span>)}</div></Reveal></section>
 
-      <section id="contact" className="mx-auto max-w-5xl px-6 py-32 text-center"><Reveal><div className="glass rounded-[3rem] p-10 md:p-16"><p className="text-sm uppercase tracking-[0.35em] text-black/45">Contact</p><h2 className="mt-5 text-5xl font-semibold tracking-[-0.06em] md:text-7xl">Let’s build the next commercial system.</h2><div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row"><a className="rounded-full bg-black px-7 py-4 text-white" href="mailto:hello@zhanghao.video">Email</a><a className="rounded-full border border-black/10 px-7 py-4" href="https://www.linkedin.com/" target="_blank">LinkedIn</a><a className="rounded-full border border-black/10 px-7 py-4" href="#">Resume</a></div></div></Reveal></section>
+      <section id="contact" className="mx-auto max-w-5xl px-6 py-32 text-center"><Reveal><div className="glass rounded-[3rem] p-10 md:p-16"><p className="text-sm uppercase tracking-[0.35em] text-black/45">Contact</p><h2 className="mt-5 text-5xl font-semibold tracking-[-0.06em] md:text-7xl">Let’s build the next commercial system.</h2><div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row"><a className="rounded-full bg-black px-7 py-4 text-white" href="mailto:hello@zhanghao.video">Email</a><a className="rounded-full border border-black/10 px-7 py-4" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a><a className="rounded-full border border-black/10 px-7 py-4" href="#">Resume</a></div></div></Reveal></section>
     </main>
   );
 }

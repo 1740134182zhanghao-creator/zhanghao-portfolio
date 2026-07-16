@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description: "Premium portfolio for Zhang Hao, an AI Creative Video Designer creating AI-powered commercial videos for global e-commerce brands.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} bg-white text-black antialiased`}>{children}</body>

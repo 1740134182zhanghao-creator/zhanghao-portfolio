@@ -1,25 +1,15 @@
-import { skills } from "@/data/portfolio";
-import { GlassCard } from "./GlassCard";
+import { tools } from "@/data/portfolio";
 import { Reveal } from "./Motion";
 import { SectionTitle } from "./SectionTitle";
 
 export function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-7xl px-6 py-32">
-      <SectionTitle title="专业能力" />
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {skills.map((group, i) => (
-          <Reveal key={group.title} delay={i * 0.06}>
-            <GlassCard className="h-full rounded-[2.5rem] p-8">
-              <h3 className="text-3xl font-semibold tracking-[-0.05em] text-slate-950">{group.title}</h3>
-              <div className="mt-7 flex flex-wrap gap-3">
-                {group.items.map((item) => (
-                  <span key={item} className="rounded-full border border-white/80 bg-white/48 px-4 py-2.5 text-sm leading-6 text-slate-700 shadow-sm backdrop-blur-xl">
-                    {item}{group.core.includes(item) ? <b className="ml-2 text-slate-950">核心工具</b> : null}
-                  </span>
-                ))}
-              </div>
-            </GlassCard>
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-32 text-center">
+      <SectionTitle title="工具系统" subtitle="围绕创意、生成、剪辑、包装与交付组成的 AI 视频制作工具栈。" />
+      <div className="mt-14 flex flex-wrap justify-center gap-4">
+        {tools.map((tool, i) => (
+          <Reveal key={tool} delay={i * 0.035}>
+            <span className="inline-flex rounded-full border border-white/75 bg-white/45 px-6 py-3 text-lg font-medium tracking-[-0.03em] text-slate-700 shadow-glass backdrop-blur-2xl transition hover:-translate-y-1 hover:bg-white/70">{tool}</span>
           </Reveal>
         ))}
       </div>

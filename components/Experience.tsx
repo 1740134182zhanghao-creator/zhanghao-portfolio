@@ -1,4 +1,4 @@
-import { experience } from "@/data/portfolio";
+import { experiences } from "@/data/portfolio";
 import { GlassCard } from "./GlassCard";
 import { Reveal } from "./Motion";
 import { SectionTitle } from "./SectionTitle";
@@ -7,21 +7,27 @@ export function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-6xl px-6 py-32">
       <SectionTitle title="工作经历" />
-      <Reveal className="mt-14">
-        <GlassCard className="rounded-[3rem] p-7 md:p-12">
-          <div className="grid gap-10 md:grid-cols-[0.36fr_1fr]">
-            <div className="md:sticky md:top-32 md:self-start">
-              <p className="text-sm text-slate-500">{experience.period}</p>
-              <h3 className="mt-5 text-6xl font-semibold tracking-[-0.07em] text-slate-950">{experience.company}</h3>
-              <p className="mt-5 text-slate-500">{experience.department}</p>
-              <p className="mt-3 text-xl font-medium leading-8 text-slate-800">{experience.position}</p>
+      <div className="relative mt-16 grid gap-6 before:absolute before:left-6 before:top-8 before:hidden before:h-[calc(100%-4rem)] before:w-px before:bg-white/80 md:before:block">
+        {experiences.map((item, i) => (
+          <Reveal key={item.no} delay={i * 0.08}>
+            <div className="grid gap-5 md:grid-cols-[5rem_1fr]">
+              <div className="hidden md:flex md:justify-center"><span className="grid size-12 place-items-center rounded-full border border-white/80 bg-white/60 text-sm font-semibold text-slate-500 shadow-glass backdrop-blur-2xl">{item.no}</span></div>
+              <GlassCard className="rounded-[2.7rem] p-7 md:p-10">
+                <div className="grid gap-8 md:grid-cols-[0.36fr_1fr]">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.24em] text-slate-400">{item.period}</p>
+                    <h3 className="mt-4 text-5xl font-semibold tracking-[-0.07em] text-slate-950">{item.title}</h3>
+                    <p className="mt-4 text-xl font-medium text-slate-700">{item.role}</p>
+                  </div>
+                  <ul className="grid gap-3 sm:grid-cols-2">
+                    {item.body.map((point) => <li key={point} className="rounded-[1.25rem] border border-white/60 bg-white/38 px-4 py-3 text-slate-600 shadow-sm backdrop-blur-xl">• {point}</li>)}
+                  </ul>
+                </div>
+              </GlassCard>
             </div>
-            <ul className="grid gap-3 border-l border-white/80 pl-6">
-              {experience.points.map((point) => <li key={point} className="rounded-[1.4rem] border border-white/55 bg-white/38 px-5 py-4 leading-8 text-slate-600 shadow-sm backdrop-blur-xl">{point}</li>)}
-            </ul>
-          </div>
-        </GlassCard>
-      </Reveal>
+          </Reveal>
+        ))}
+      </div>
     </section>
   );
 }

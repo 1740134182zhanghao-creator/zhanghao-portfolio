@@ -1,0 +1,107 @@
+.scroll-stack {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-card {
+  --scroll-stack-scale: 1;
+  position: sticky;
+  z-index: calc(10 + var(--scroll-stack-index));
+  top: calc(6rem + var(--scroll-stack-index) * 1.25rem);
+  width: 100%;
+  margin-bottom: clamp(7rem, 16vh, 11rem);
+  transform: scale(var(--scroll-stack-scale));
+  transform-origin: top center;
+  backface-visibility: hidden;
+}
+
+.scroll-stack-card:last-child {
+  margin-bottom: 0;
+}
+
+.scroll-stack[data-stack-enabled="true"] .scroll-stack-card {
+  will-change: transform;
+}
+
+.scroll-stack--disabled .scroll-stack-card {
+  position: relative;
+  top: auto;
+  margin-bottom: 1.5rem;
+  transform: none;
+}
+
+.project-category-card {
+  display: flex;
+  min-height: clamp(36rem, 70vh, 47rem);
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  border-radius: clamp(2rem, 3.2vw, 3rem);
+}
+
+.project-preview-grid {
+  display: grid;
+  width: 100%;
+  max-width: 46rem;
+  margin: 2rem auto 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.project-preview-item {
+  min-width: 0;
+}
+
+.project-category-action {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+@media (max-width: 1023px) {
+  .scroll-stack-card {
+    position: relative;
+    top: auto;
+    margin-bottom: 1.5rem;
+    transform: none !important;
+  }
+
+  .project-preview-grid {
+    max-width: 46rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-height: 799px) {
+  .scroll-stack-card {
+    position: relative;
+    top: auto;
+    margin-bottom: 1.5rem;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .project-category-card {
+    min-height: 0;
+    padding: 1.25rem;
+    border-radius: 1.75rem;
+  }
+
+  .project-preview-grid {
+    max-width: 20rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-stack-card {
+    position: relative;
+    top: auto;
+    margin-bottom: 1.5rem;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}

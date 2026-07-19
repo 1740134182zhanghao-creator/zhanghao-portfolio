@@ -1,25 +1,38 @@
-import { about } from "@/data/portfolio";
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
 import { GlassCard } from "./GlassCard";
 import { Reveal } from "./Motion";
 import { SectionTitle } from "./SectionTitle";
+import { useLanguage } from "./i18n/LanguageProvider";
+import { GlareHover } from "./effects/GlareHover";
 
 export function About() {
+  const { messages } = useLanguage();
+  const [imageFailed, setImageFailed] = useState(false);
+
   return (
     <section id="about" className="mx-auto max-w-6xl px-6 py-32">
       <GlassCard className="rounded-[3.4rem] p-8 md:p-16">
-        <div className="grid items-center gap-12 md:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid items-center gap-12 md:grid-cols-[0.62fr_1fr] lg:gap-16">
           <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.7rem] border border-white/70 bg-[radial-gradient(circle_at_50%_15%,#fff,transparent_30%),linear-gradient(160deg,#f9fbff,#e4edf6)] shadow-inner">
-              <div className="absolute inset-x-12 bottom-0 h-4/5 rounded-t-full bg-gradient-to-b from-white/80 via-slate-200 to-slate-400/70" />
-              <div className="absolute bottom-7 left-7 right-7 rounded-[1.7rem] border border-white/70 bg-white/52 p-4 text-center text-sm text-slate-500 shadow-glass backdrop-blur-2xl">可替换个人资料 / 照片</div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.7rem] border border-white/70 bg-slate-100 shadow-inner">
+              {imageFailed ? (
+                <div className="grid h-full place-items-center bg-[linear-gradient(145deg,#f8fafc,#e8eef4)] px-8 text-center text-sm text-slate-400">{messages.about.imageFallback}</div>
+              ) : (
+                <GlareHover width="100%" height="100%" background="transparent" borderRadius="inherit" borderColor="transparent" glareColor="#ffffff" glareOpacity={0.28} glareAngle={-45} glareSize={325} transitionDuration={1400} playOnce className="about-avatar-glare">
+                  <Image src="/avatar/zhanghao.png" alt={messages.about.imageAlt} fill sizes="(max-width: 767px) calc(100vw - 112px), 380px" className="object-cover object-center" onError={() => setImageFailed(true)} />
+                </GlareHover>
+              )}
             </div>
           </Reveal>
           <div>
-            <SectionTitle title="关于我" align="left" />
-            <Reveal delay={0.1} className="mt-10 space-y-6 text-xl leading-10 text-slate-600">
-              {about.paragraphs.map((p) => <p key={p}>{p}</p>)}
-              <div className="flex flex-wrap gap-3 pt-4">
-                {about.tags.map((tag) => <span key={tag} className="rounded-full border border-white/80 bg-white/52 px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm backdrop-blur-2xl">{tag}</span>)}
+            <SectionTitle title={messages.about.title} align="left" />
+            <Reveal delay={0.1} className="mt-9 space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg md:leading-9">
+              {messages.about.paragraphs.map((paragraph, index) => <p key={index} className="max-w-[46rem]">{paragraph}</p>)}
+              <div className="flex flex-wrap gap-3 pt-5">
+                {messages.about.tags.map((tag) => <span key={tag} className="rounded-full border border-white/80 bg-white/52 px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm backdrop-blur-2xl">{tag}</span>)}
               </div>
             </Reveal>
           </div>

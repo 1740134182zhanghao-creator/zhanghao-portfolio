@@ -1,6 +1,6 @@
 # Zhang Hao Portfolio
 
-A premium Next.js portfolio website for Zhang Hao, an AI Creative Video Designer creating AI-powered commercial videos for global e-commerce brands.
+A premium Next.js portfolio website for Zhang Hao, a Creative Video Designer working across directing, content production and commercial video for global brands.
 
 ## Stack
 

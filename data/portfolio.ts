@@ -1,5 +1,5 @@
 export const site = {
-  title: "张皓｜AI 创意视频设计师",
+  title: "张皓｜创意视频设计师",
   description: "张皓的中文个人网页简历，聚焦 AI 创意视频、海外电商广告与商业视觉叙事。",
   nav: [
     { label: "首页", href: "#hero" },
@@ -14,8 +14,8 @@ export const site = {
 
 export const hero = {
   name: "ZHANG HAO",
-  role: "AI 创意视频设计师",
-  englishRole: "AI Creative Video Designer",
+  role: "创意视频设计师",
+  englishRole: "Creative Video Designer",
   tagline: "TEMU 海外项目经验",
   description: "1300+ 商业视频作品",
 };
@@ -38,7 +38,7 @@ export const stats = [
 
 export const about = {
   paragraphs: [
-    "我是一名 AI 创意视频设计师，拥有 TEMU 海外商业视频制作经验。",
+    "我是一名创意视频设计师，拥有 TEMU 海外商业视频制作经验。",
     "专注于 AI 商业广告、产品短视频、全球电商视觉表达与创意内容设计。",
     "熟悉从创意策划、AI 图片生成、AI 视频生成、数字人口播、剪辑包装到商业交付的完整工作流程。",
   ],
@@ -46,7 +46,7 @@ export const about = {
 };
 
 export const experiences = [
-  { no: "01", title: "TEMU", role: "AI 创意视频设计师", period: "2023 — 至今", body: ["AI 商业视频制作", "创意脚本策划", "AI 图片生成", "AI 视频生成", "数字人口播", "视频剪辑包装", "热点趋势研究", "海外广告创意"] },
+  { no: "01", title: "TEMU", role: "创意视频设计师", period: "2023 — 至今", body: ["AI 商业视频制作", "创意脚本策划", "AI 图片生成", "AI 视频生成", "数字人口播", "视频剪辑包装", "热点趋势研究", "海外广告创意"] },
   { no: "02", title: "实习经历", role: "预留位置", period: "可展示后续补充内容", body: ["商业设计辅助", "内容创意执行", "跨团队协作"] },
   { no: "03", title: "校园经历", role: "预留位置", period: "可展示后续补充内容", body: ["视觉创作训练", "影像叙事探索", "个人项目沉淀"] },
 ] as const;
